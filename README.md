@@ -1,2 +1,2 @@
 # HTM-Omniglot
-Hierarchical Temporal Memory applied to the one shot learning problem of the Omniglot challenge
+Unzip the ```all_runs.zip``` folder into the current directory and run ```classification.py```.
