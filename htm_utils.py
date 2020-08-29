@@ -10,7 +10,6 @@ class SpatialPooler:
 
         self.sparsity = self.active_columns / self.columns
 
-        self.boosting_intensity = 0.3
         self.duty_cycle_inertia = 0.99
 
         self.permanence_threshold = 0.0
@@ -29,7 +28,7 @@ class SpatialPooler:
         weight = self.permanence > self.permanence_threshold
         self.overlaps = np.sum(input & weight, axis=1)
         
-        boosting = np.exp(self.boosting_intensity * -self.duty_cycle / self.sparsity)
+        boosting = np.log(self.duty_cycle) / np.log(self.sparsity)
         sorted = (boosting * self.overlaps).argsort()
         self.active = sorted[-self.active_columns:]
 
